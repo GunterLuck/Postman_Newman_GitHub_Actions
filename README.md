@@ -11,7 +11,7 @@ This is an enhanced repository as a task
 
 Download or clone a project
 
-To clone a project with `GIT`, call `git clone `
+To clone a project with `GIT`, call `git clone https://github.com/GunterLuck/Postman_Newman_GitHub_Actions.git`
 
 To install dependencies , call `npm i`
 
