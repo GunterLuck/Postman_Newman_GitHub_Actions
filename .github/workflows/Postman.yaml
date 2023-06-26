@@ -35,8 +35,10 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export docs/index.html --reporter-htmlextra-darkTheme || true
-
+          git add docs
+          git commit -m "add docs"
+          git pull
+          git push https://${{secrets.TOKEN}}@github.com/${{GunterLuck.Postman_Newman_GitHub_Actions}}.git HEAD:main
 
       # Upload the contents of docs directory to workspace
       - name: Output the run Details
