@@ -35,6 +35,11 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
+          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export docs/index.html || true
+        
+        
+      - name: Add Index file to GIT
+        run: |
           git config user.name "GunterLuck"
           git config user.email "nkmts2510@gmail.com"
           git add .
