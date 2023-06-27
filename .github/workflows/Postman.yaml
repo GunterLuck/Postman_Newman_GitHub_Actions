@@ -35,6 +35,8 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
+          git --config user.name "GunterLuck"
+          git --config user.email "nkmts2510@gmail.com"
           git add .
           git commit -m "add docs"
           git push https://${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:main
