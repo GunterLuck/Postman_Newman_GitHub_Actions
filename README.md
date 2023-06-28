@@ -25,4 +25,4 @@ To install dependencies , call `npm i`
 ## Run by Newman
 Enter in the terminal `npm run newman-run`
 
-
+To see results click [here]( https://gunterluck.github.io/Postman_Newman_GitHub_Actions/)
