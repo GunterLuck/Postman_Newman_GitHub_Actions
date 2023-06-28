@@ -29,7 +29,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add docs/index.html
           git commit -m "Add generated index.html" -a
-          git push https://${{secrets.TEST_SECRET}}@github.com/${{github.repository}}.git HEAD:main
+          git push https://${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:main
     
       - name: Output the run Details
         uses: actions/upload-artifact@v2
