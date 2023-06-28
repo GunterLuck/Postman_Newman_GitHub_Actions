@@ -7,47 +7,35 @@ jobs:
   test-api:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-
-      # INstall Node on the runner
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: "16.x"
       - run: npm i npm@latest
       - run: npm i
-
-
-      # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
-
-
-      # Run the POSTMAN collection
+      
       - name: Run POSTMAN collection
         run: |
           newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export docs/index.html || true
-        
-        
-      - name: Add Index file to GIT
-        run: |
-          git config user.name "GunterLuck"
-          git config user.email "nkmts2510@gmail.com"
-          git add .
-          git commit -m "add docs"
-          git push https://${{secrets.TOKEN}}@github.com/${{github.repository}}.git HEAD:main
 
-      # Upload the contents of docs directory to workspace
+      - name: Add, commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/index.html
+          git commit -m "Add generated index.html" -a
+          git push https://${{secrets.TEST_SECRET}}@github.com/${{github.repository}}.git HEAD:main
+    
       - name: Output the run Details
         uses: actions/upload-artifact@v2
         with:
           name: RunReports
           path: docs
-
 
 
     
